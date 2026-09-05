@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reflex — Delivery coordination</title>
+<link rel="stylesheet" href="shared/styles.css" />
+<style>
+  .landing { max-width: 720px; margin: 0 auto; padding: 64px 20px; }
+  .landing-header { text-align: center; margin-bottom: 48px; }
+  .landing-header .brand-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
+  .landing-header h1 { font-size: 26px; margin: 0; letter-spacing: -0.01em; }
+  .landing-header p { color: var(--text-muted); font-size: 14.5px; max-width: 480px; margin: 0 auto; }
+  .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 640px) { .role-grid { grid-template-columns: 1fr; } }
+  .role-card {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 22px 18px; transition: border-color 0.15s;
+  }
+  .role-card:hover { border-color: var(--accent); }
+  .role-card .role-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .role-card .role-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+  .role-card .role-arrow { color: var(--accent); font-size: 12px; margin-top: 14px; display: block; }
+</style>
+</head>
+<body>
+<div class="landing">
+  <div class="landing-header">
+    <div class="brand-row">
+      <span class="mark"></span>
+      <h1>Reflex</h1>
+    </div>
+    <p>A shared, real-time record of every delivery — from request to confirmed drop-off. Pick a role to open its view.</p>
+  </div>
+
+  <div class="role-grid">
+    <a class="role-card" href="retailer/index.html">
+      <div class="role-name">Retailer staff</div>
+      <div class="role-desc">Log a delivery request and watch its status update live.</div>
+      <span class="role-arrow">Open retailer view →</span>
+    </a>
+    <a class="role-card" href="dispatcher/index.html">
+      <div class="role-name">Dispatcher</div>
+      <div class="role-desc">See open requests, assign riders, and monitor the full board.</div>
+      <span class="role-arrow">Open dispatcher view →</span>
+    </a>
+    <a class="role-card" href="rider/index.html">
+      <div class="role-name">Rider</div>
+      <div class="role-desc">See assigned deliveries, mark picked up, confirm with a photo.</div>
+      <span class="role-arrow">Open rider view →</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>
