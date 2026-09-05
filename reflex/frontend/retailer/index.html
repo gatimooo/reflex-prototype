@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reflex — Retailer</title>
+<link rel="stylesheet" href="../shared/styles.css" />
+</head>
+<body>
+<div class="app-shell narrow">
+  <header class="top-bar">
+    <div class="brand">
+      <span class="mark"></span>
+      <h1>Reflex</h1>
+      <span class="persona">Retailer</span>
+    </div>
+    <div class="conn-status"><span class="conn-dot" id="connDot"></span><span id="connLabel">connecting…</span></div>
+  </header>
+
+  <div class="panel">
+    <div class="user-switch">
+      <label style="margin:0;">Logged in as</label>
+      <select id="userSelect"></select>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Log a delivery request</h2>
+    <form id="deliveryForm">
+      <label for="customer_name">Customer name</label>
+      <input id="customer_name" required placeholder="e.g. Joyce Wanjiru" />
+
+      <label for="customer_phone">Customer phone</label>
+      <input id="customer_phone" required placeholder="e.g. 0722 111 222" />
+
+      <label for="customer_address">Delivery address</label>
+      <input id="customer_address" required placeholder="e.g. Kilimani, Nairobi — near Yaya Centre" />
+
+      <label for="item_description">Item</label>
+      <textarea id="item_description" required placeholder="What's being delivered?"></textarea>
+
+      <button type="submit" class="btn btn-block">Log request</button>
+    </form>
+  </div>
+
+  <div class="panel">
+    <h2>Your requests <span class="count" id="deliveryCount"></span></h2>
+    <div id="deliveryList"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+<script src="../shared/api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

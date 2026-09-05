@@ -1,0 +1,31 @@
+sequenceDiagram
+    participant R as Retailer Staff
+    participant API as Reflex API
+    participant WS as Socket.io (broadcast)
+    participant D as Dispatcher
+    participant Ri as Rider
+
+    R->>API: POST /deliveries (customer, address, item)
+    API->>API: create row, status = Requested, log history
+    API->>WS: emit delivery:created
+    WS-->>D: board updates — new open request appears
+    WS-->>R: own list updates — status: Requested
+
+    D->>API: PATCH /deliveries/:id/assign (rider_id)
+    API->>API: status -> Assigned, log history
+    API->>WS: emit delivery:update
+    WS-->>Ri: delivery appears on their device
+    WS-->>R: status: Assigned, rider name + phone visible
+
+    Ri->>API: PATCH /deliveries/:id/status (Picked Up)
+    API->>API: validate rider owns this delivery + transition allowed
+    API->>WS: emit delivery:update
+    WS-->>R: status: Picked Up
+    WS-->>D: board reflects Picked Up
+
+    Ri->>API: POST /deliveries/:id/proof (photo)
+    API->>API: require status = Picked Up + photo present
+    API->>API: status -> Delivered, store photo path, log history
+    API->>WS: emit delivery:update
+    WS-->>R: status: Delivered, proof photo visible
+    WS-->>D: board reflects Delivered

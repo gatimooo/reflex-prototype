@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reflex — Dispatcher</title>
+<link rel="stylesheet" href="../shared/styles.css" />
+</head>
+<body>
+<div class="app-shell">
+  <header class="top-bar">
+    <div class="brand">
+      <span class="mark"></span>
+      <h1>Reflex</h1>
+      <span class="persona">Dispatcher</span>
+    </div>
+    <div class="conn-status"><span class="conn-dot" id="connDot"></span><span id="connLabel">connecting…</span></div>
+  </header>
+
+  <div class="panel">
+    <div class="user-switch">
+      <label style="margin:0;">Logged in as</label>
+      <select id="userSelect"></select>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="panel">
+      <h2>Open requests <span class="count" id="openCount"></span></h2>
+      <div id="openList"></div>
+    </div>
+
+    <div class="panel">
+      <h2>All deliveries <span class="count" id="allCount"></span></h2>
+      <div id="allList"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+<script src="../shared/api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

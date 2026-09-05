@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reflex — Rider</title>
+<link rel="stylesheet" href="../shared/styles.css" />
+</head>
+<body>
+<div class="app-shell narrow">
+  <header class="top-bar">
+    <div class="brand">
+      <span class="mark"></span>
+      <h1>Reflex</h1>
+      <span class="persona">Rider</span>
+    </div>
+    <div class="conn-status"><span class="conn-dot" id="connDot"></span><span id="connLabel">connecting…</span></div>
+  </header>
+
+  <div class="panel">
+    <div class="user-switch">
+      <label style="margin:0;">Logged in as</label>
+      <select id="userSelect"></select>
+    </div>
+  </div>
+
+  <h2 style="font-size:14px; color:var(--text-muted); margin: 4px 2px 12px;">Your deliveries <span id="myCount"></span></h2>
+  <div id="myList"></div>
+</div>
+
+<!-- Hidden file input reused for every "Confirm delivery" action -->
+<input type="file" id="proofInput" accept="image/*" capture="environment" style="display:none;" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+<script src="../shared/api.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

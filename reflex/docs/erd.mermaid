@@ -1,0 +1,38 @@
+erDiagram
+    USERS ||--o{ DELIVERIES : "logs (as retailer_staff)"
+    USERS ||--o{ DELIVERIES : "fulfills (as rider)"
+    USERS ||--o{ DELIVERY_STATUS_HISTORY : "made"
+    DELIVERIES ||--o{ DELIVERY_STATUS_HISTORY : "has"
+
+    USERS {
+        string id PK
+        string name
+        string role "retailer_staff | dispatcher | rider"
+        string shop_name "nullable, retailer_staff only"
+        string phone
+        datetime created_at
+    }
+
+    DELIVERIES {
+        string id PK
+        string retailer_id FK "who logged it"
+        string customer_name
+        string customer_phone
+        string customer_address
+        string item_description
+        string status "Requested/Assigned/Picked Up/Delivered/Failed/Cancelled"
+        string assigned_rider_id FK "nullable until assigned"
+        string proof_photo_path "nullable until Delivered"
+        string proof_note "nullable"
+        datetime created_at
+        datetime updated_at
+    }
+
+    DELIVERY_STATUS_HISTORY {
+        string id PK
+        string delivery_id FK
+        string status "the status this row transitioned to"
+        string changed_by FK "user who made the change"
+        string note "nullable"
+        datetime changed_at
+    }
