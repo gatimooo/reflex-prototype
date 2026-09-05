@@ -2,7 +2,7 @@
 // demo "current user" header, a Socket.io connection, and a tiny toast util.
 // Loaded by every persona page before its own <page>.js.
 
-const API_BASE = window.REFLEX_API_BASE || 'https://reflex-backend-1.onrender.com/';
+const API_BASE = window.REFLEX_API_BASE || 'https://reflex-backend-1.onrender.com';
 
 const ReflexAPI = {
   currentUserId: localStorage.getItem('reflex_user_id') || null,
